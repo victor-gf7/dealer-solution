@@ -2,6 +2,7 @@ package com.exercise.dealersolution.core.entities;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Objects;
 
 import com.exercise.dealersolution.core.enums.StatusEnum;
 
@@ -28,6 +29,10 @@ public class Product {
     this.deadline = deadline;
   }
 
+  public Long getId() {
+    return id;
+  }
+
   public String getDescription() {
     return description;
   }
@@ -46,5 +51,31 @@ public class Product {
 
   public Date getDeadline() {
     return deadline;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Product product = (Product) o;
+    return Objects.equals(id, product.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
+
+  @Override
+  public String toString() {
+    return "Product{" +
+            "id=" + id +
+            ", description='" + description + '\'' +
+            ", status=" + status +
+            ", price=" + price +
+            ", quantity=" + quantity +
+            ", deadline=" + deadline +
+            '}';
   }
 }
