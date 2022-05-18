@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/productdb
+    driverClassName: org.postgresql.Driver
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:secret}
+    hikari:
+      connection-timeout: 1000
+      idle-timeout: 10000
+      minimum-idle: 10
+      maximum-pool-size: 20
+    schema-generate: UPDATE
+    dialect: POSTGRES
+
+  jpa:
+    hibernate:
+      ddl-auto: update

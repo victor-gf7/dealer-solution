@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:alpine
+    volumes:
+      - postgresapp-volume:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: productdb
+    ports:
+      - "5432:5432"
+    networks:
+      - productnetwork
+
+volumes:
+  postgresapp-volume:
+
+networks:
+  productnetwork:
+    driver: bridge
